@@ -35,7 +35,7 @@ def main():
     # Instantiate the parser and feed it some html
     myParser = MyHTMLParser()
     
-    f_html = open("samplehtml.html","r")
+    f_html = open("sample_original.html","r")
     if f_html.mode == "r":
         # Read the entire file
         contents = f_html.read()
