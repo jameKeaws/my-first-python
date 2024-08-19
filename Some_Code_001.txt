@@ -1,0 +1,50 @@
+# anyString = 'AAAABBBB2222'
+anyString = 'ABABABABC'
+# We have converted our string to a list
+myStringAsList = list(anyString)
+print(myStringAsList)
+
+myTupleList = []
+recurringCharacterCount = 0
+characterBeingTracked = None
+listLengthTracker = 0
+
+print(f'This is my myStringAsList length {len(myStringAsList)}')
+
+if len(myStringAsList) == 1:
+    aNewTuple = (myStringAsList[0], 1)
+    myTupleList.append(aNewTuple)
+else:
+    for itemCharacter in myStringAsList:
+        print(f'This is the current {itemCharacter}')
+        listLengthTracker = listLengthTracker + 1
+        #We have encountered a new character
+        if recurringCharacterCount == 0:
+            # Let us track that character
+            characterBeingTracked = itemCharacter
+            recurringCharacterCount = 1
+            # There is only one character
+            if (listLengthTracker == len(myStringAsList)):
+                aNewTuple = (characterBeingTracked, recurringCharacterCount)
+                print(aNewTuple)
+                myTupleList.append(aNewTuple)
+        #We still have the same character
+        else:
+            if characterBeingTracked == itemCharacter:
+                recurringCharacterCount = recurringCharacterCount + 1
+                # This is the last character add them to the list
+            # We encountered a new character
+            else:
+                #Create a new tuple as that is the end
+                aNewTuple = (characterBeingTracked, recurringCharacterCount)
+                print(aNewTuple)
+                myTupleList.append(aNewTuple)
+                
+                #Then identify the new character being tracked recurringCharacterCount 
+                characterBeingTracked = itemCharacter
+                #Then set recurringCharacterCount to 1
+                recurringCharacterCount = 1
+            
+print(myTupleList)
+
+# return myTupleList
