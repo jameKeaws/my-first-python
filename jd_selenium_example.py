@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 # import re
 
-#References
+#* References
 #https://www.youtube.com/watch?v=b5jt2bhSeXs&list=PLzMcBGfZo4-n40rB1XaJ0ak1bemvlqumQ&index=2
 # https://stackoverflow.com/questions/51336849/selenium-implicit-and-explicit-waits-not-working-has-no-effect
 
@@ -29,8 +29,8 @@ def main():
         driver.maximize_window()
         
         # On the perthmint.com home page, click on 
-        search_icon = driver.find_element(By.CSS_SELECTOR, '.header__sub-nav-item.header__nav-item--search')
-        search_icon.click()
+        search_iconx = driver.find_element(By.CSS_SELECTOR, '.header__sub-nav-item.header__nav-item--search')
+        search_iconx.click()
         search_text_field = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, search_text_field_css_selector))
         )

@@ -26,6 +26,7 @@ def someFunction():
     myStr = "myStr value inside someFunction"
     print(f'This is inside the function : {myStr}')
     
+    
 someFunction()
 print(f'This is outside the function : {myStr}')
 
