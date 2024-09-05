@@ -1,48 +1,38 @@
 # Python Object Oriented Programming by Joe Marini course example
-# Programming challenge: add methods for comparison and equality
+# Programming challenge: implement a dataclass
 
-# Challenge: use a magic method to make stocks and bonds sortable
-# Stocks should sort from low to high on price
-# Bonds should sort from low to high on yield
-
+# Challenge: convert your classes to dataclasses
+# The subclasses are required to override the magic method
+# that makes them sortable
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
 
-
+@dataclass
 class Asset(ABC):
-    def __init__(self, price):
-        self.price = price
-
+    price: float
+    
     @abstractmethod
-    def __str__(self):
+    def __lt__(self,other):
         pass
-
-
+    
+    
+@dataclass
 class Stock(Asset):
-    def __init__(self, ticker, price, company):
-        super().__init__(price)
-        self.company = company
-        self.ticker = ticker
-        
+    ticker: str
+    company: str
+    
     def __lt__(self, other):
         if (self.price < other.price):
             return True
         else:
             return False
-    
-    def __str__(self):
-        return f"Stock: {self.ticker} {self.price} {self.company}"
 
-
+@dataclass
 class Bond(Asset):
-    def __init__(self, price, description, duration, yieldamt):
-        super().__init__(price)
-        self.description = description
-        self.duration = duration
-        self.yieldamt = yieldamt
+    description: str
+    duration: int
+    yieldamt: float
     
-    def __str__(self):
-        return f"Bond: {self.price} {self.description} {self.duration} {self.duration}"
-        
     def __lt__(self, other):
         if (self.yieldamt < other.yieldamt):
             return True
@@ -64,11 +54,16 @@ bonds = [
     Bond(99.57, "2 Year US Treasury", 2, 4.98)
 ]
 
+try:
+   ast = Asset(100.0)
+except:
+   print("Can't instantiate Asset!")
+
 stocks.sort()
 bonds.sort()
 
 for stock in stocks:
-    print(stock)
+   print(stock)
 print("-----------")
 for bond in bonds:
-    print(bond)
+   print(bond)
